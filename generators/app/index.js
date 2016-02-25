@@ -117,10 +117,15 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('app/scripts/helper_module.js'),
         this.destinationPath('app/scripts/helper_module.js')
     );
+
+    this.fs.copy(
+        this.templatePath('app/styles/mymodule.css'),
+        this.destinationPath('app/styles/mymodule.css')
+    );
   },
 
   install: function () {
-    //this.installDependencies();
+    this.installDependencies();
   }
 });
 

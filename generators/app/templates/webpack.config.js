@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
   context: __dirname + '/app',
-  entry: {rnautils: ['./scripts/mymodule.js']},
+  entry: {mymodule: ['./scripts/mymodule.js']},
   output: {
     path: __dirname + '/build',
     filename: '[name].js',
