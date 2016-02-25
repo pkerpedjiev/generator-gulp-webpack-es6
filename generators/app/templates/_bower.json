@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "homepage": "<%= homepage %>",
   "authors": [
-    "Peter Kerpedjiev <pkerp@tbi.univie.ac.at>"
+    "<%= author %> <<%= email %>>"
   ],
   "description": "<%= description %>",
   "main": [

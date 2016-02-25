@@ -41,7 +41,7 @@ module.exports = yeoman.generators.Base.extend({
     },
     { 
         type: 'input',
-        name: 'username',
+        name: 'author',
         message: "Author's name",
         default: this.gitInfo.name
     },
@@ -66,7 +66,9 @@ module.exports = yeoman.generators.Base.extend({
       var passedOptions = {
           name: this.props.name,
           description: this.props.description,
-          homepage: this.props.homepage
+          homepage: this.props.homepage,
+          author: this.props.author,
+          email: this.props.email
     }
 
     this.fs.copyTpl(
@@ -99,6 +101,21 @@ module.exports = yeoman.generators.Base.extend({
     this.fs.copy(
         this.templatePath('.babelrc'),
         this.destinationPath('.babelrc')
+    );
+
+    this.fs.copy(
+        this.templatePath('app/index.html'),
+        this.destinationPath('app/index.html')
+    );
+
+    this.fs.copy(
+        this.templatePath('app/scripts/mymodule.js'),
+        this.destinationPath('app/scripts/mymodule.js')
+    );
+
+    this.fs.copy(
+        this.templatePath('app/scripts/helper_module.js'),
+        this.destinationPath('app/scripts/helper_module.js')
     );
   },
 

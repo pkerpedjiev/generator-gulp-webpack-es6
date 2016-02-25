@@ -2,6 +2,7 @@
   "name": "<%= name %>",
   "version": "0.1.0",
   "description": "<%= description %>",
+  "author": "<%= author %> <<%= email %>>",
   "main": "dist/scripts/my-module.js",
   "keywords": [
     "yeoman-generator"
