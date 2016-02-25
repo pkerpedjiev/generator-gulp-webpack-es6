@@ -3,16 +3,24 @@
   "version": "0.0.0",
   "description": "A generator for javascript modules built using gulp and 'compiled' using webpack.",
   "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pkerpedjiev/generator-gulp-webpack-es6"
+  },
   "author": {
     "name": "Peter Kerpedjiev",
     "email": "pkerpedjiev@gmail.com",
     "url": "emptypipes.org/about"
   },
+  "license": "MIT",
   "files": [
     "generators"
   ],
   "main": "generators/index.js",
   "keywords": [
     "gulp webpack es6"
-  ]
+  ],
+  "dependencies": {
+    "shelljs": "^0.6.0"
+  }
 }

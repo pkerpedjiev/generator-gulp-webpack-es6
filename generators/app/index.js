@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var shelljs = require('shelljs');
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
@@ -11,6 +12,14 @@ module.exports = yeoman.generators.Base.extend({
     this.log(yosay(
       'Welcome to the exceptional ' + chalk.red('generator-gulp-webpack-es-6') + ' generator!'
     ));
+
+    // get potential default values from user's gitconfig
+    // from https://github.com/yeoman/generator/issues/190
+    this.gitInfo = {
+        name: shelljs.exec('git config user.name', {silent: true}).output.replace(/\n/g, ''),
+        email: shelljs.exec('git config user.email', {silent: true}).output.replace(/\n/g, ''),
+        github: shelljs.exec('git config github.user', {silent: true}).output.replace(/\n/g, ''),
+    };
 
     var prompts = [{
       type: 'input',
@@ -23,7 +32,26 @@ module.exports = yeoman.generators.Base.extend({
       name: 'description',
       message: 'A description of your project',
       default: ''
+    }, 
+    {
+        type: 'input',
+        name: 'homepage',
+        message: 'The home page of the project',
+        default: ''
+    },
+    { 
+        type: 'input',
+        name: 'username',
+        message: "Author's name",
+        default: this.gitInfo.name
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: "Author's email",
+    default: this.gitInfo.email
     }
+
     ];
 
     this.prompt(prompts, function (props) {
@@ -35,23 +63,47 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
+      var passedOptions = {
+          name: this.props.name,
+          description: this.props.description,
+          homepage: this.props.homepage
+    }
+
     this.fs.copyTpl(
       this.templatePath('_package.json'),
-      this.destinationPath('package.json', {
-          name: this.props.name;
-      });
+      this.destinationPath('package.json'), 
+      passedOptions
     );
 
     this.fs.copyTpl(
       this.templatePath('_bower.json'),
-      this.destinationPath('bower.json', {
-          name: this.props.name;
-      });
+      this.destinationPath('bower.json'), 
+      passedOptions
+    );
+
+    this.fs.copy(
+        this.templatePath('gulpfile.babel.js'),
+        this.destinationPath('gulpfile.babel.js')
+    );
+
+    this.fs.copy(
+        this.templatePath('webpack.config.js'),
+        this.destinationPath('webpack.config.js')
+    );
+
+    this.fs.copy(
+        this.templatePath('.eslintrc'),
+        this.destinationPath('.eslintrc')
+    );
+
+    this.fs.copy(
+        this.templatePath('.babelrc'),
+        this.destinationPath('.babelrc')
     );
   },
 
   install: function () {
-    this.installDependencies();
+    //this.installDependencies();
   }
 });
 
