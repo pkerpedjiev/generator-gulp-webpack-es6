@@ -88,9 +88,10 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('gulpfile.babel.js')
     );
 
-    this.fs.copy(
+    this.fs.copyTpl(
         this.templatePath('webpack.config.js'),
-        this.destinationPath('webpack.config.js')
+        this.destinationPath('webpack.config.js'),
+                            passedOptions
     );
 
     this.fs.copy(
@@ -103,14 +104,15 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('.babelrc')
     );
 
-    this.fs.copy(
+    this.fs.copyTpl(
         this.templatePath('app/index.html'),
-        this.destinationPath('app/index.html')
+        this.destinationPath('app/index.html'),
+        passedOptions
     );
 
     this.fs.copy(
         this.templatePath('app/scripts/mymodule.js'),
-        this.destinationPath('app/scripts/mymodule.js')
+        this.destinationPath('app/scripts/' + this.props.name + '.js')
     );
 
     this.fs.copy(
@@ -120,7 +122,7 @@ module.exports = yeoman.generators.Base.extend({
 
     this.fs.copy(
         this.templatePath('app/styles/mymodule.css'),
-        this.destinationPath('app/styles/mymodule.css')
+        this.destinationPath('app/styles/' + this.props.name + '.css')
     );
   },
 

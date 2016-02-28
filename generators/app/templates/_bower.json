@@ -7,7 +7,7 @@
   ],
   "description": "<%= description %>",
   "main": [
-    "dist/scripts/mymodule.js"
+    "dist/scripts/<%= name %>.js"
   ],
   "moduleType": "es6",
   "keywords": [ ],

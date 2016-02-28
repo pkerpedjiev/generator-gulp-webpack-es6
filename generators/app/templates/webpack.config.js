@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
   context: __dirname + '/app',
-  entry: {mymodule: ['./scripts/mymodule.js']},
+  entry: {<%= name %>: ['./scripts/<%= name %>.js']},
   output: {
     path: __dirname + '/build',
     filename: '[name].js',

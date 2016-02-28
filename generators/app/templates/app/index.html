@@ -6,15 +6,15 @@
 </head>
 <body>
 
-<!-- build:js scripts/mymodule.js -->
-<script src='scripts/mymodule.js'></script>
+<!-- build:js scripts/<%= name %>.js -->
+<script src='scripts/<%= name %>.js'></script>
 <!-- endbuild -->
 
 <div id="circle"></div>
 
 <script type='text/javascript'>
 
-mymodule.drawCircle('#circle');
+<%= name %>.drawCircle('#circle');
 
 </script>
 </body>
