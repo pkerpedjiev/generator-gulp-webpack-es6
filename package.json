@@ -1,6 +1,6 @@
 {
   "name": "generator-gulp-webpack-es6",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A generator for javascript modules built using gulp and 'compiled' using webpack.",
   "homepage": "",
   "repository": {
