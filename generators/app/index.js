@@ -25,7 +25,7 @@ module.exports = yeoman.generators.Base.extend({
     var prompts = [{
       type: 'input',
       name: 'name',
-      message: 'The top-level module name (e.g., main)',
+      message: 'The module name (e.g., main or circle)',
       default: snake_case(this.appname)
     },{
 
