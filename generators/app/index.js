@@ -1,13 +1,14 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+var snake_case = require('snake-case');
 var yosay = require('yosay');
 var shelljs = require('shelljs');
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
     var done = this.async();
-    
+
     // Have Yeoman greet the user.
     this.log(yosay(
       'Welcome to the exceptional ' + chalk.red('generator-gulp-webpack-es-6') + ' generator!'
@@ -24,22 +25,22 @@ module.exports = yeoman.generators.Base.extend({
     var prompts = [{
       type: 'input',
       name: 'name',
-      message: 'Your project name',
-      default: this.appname
+      message: 'The top-level module name (e.g., main)',
+      default: snake_case(this.appname)
     },{
 
       type: 'input',
       name: 'description',
       message: 'A description of your project',
       default: ''
-    }, 
+    },
     {
         type: 'input',
         name: 'homepage',
         message: 'The home page of the project',
         default: ''
     },
-    { 
+    {
         type: 'input',
         name: 'author',
         message: "Author's name",
@@ -73,13 +74,13 @@ module.exports = yeoman.generators.Base.extend({
 
     this.fs.copyTpl(
       this.templatePath('_package.json'),
-      this.destinationPath('package.json'), 
+      this.destinationPath('package.json'),
       passedOptions
     );
 
     this.fs.copyTpl(
       this.templatePath('_bower.json'),
-      this.destinationPath('bower.json'), 
+      this.destinationPath('bower.json'),
       passedOptions
     );
 
@@ -91,6 +92,12 @@ module.exports = yeoman.generators.Base.extend({
     this.fs.copyTpl(
         this.templatePath('webpack.config.js'),
         this.destinationPath('webpack.config.js'),
+                            passedOptions
+    );
+
+    this.fs.copyTpl(
+        this.templatePath('webpack_dev.config.js'),
+        this.destinationPath('webpack_dev.config.js'),
                             passedOptions
     );
 
@@ -130,5 +137,3 @@ module.exports = yeoman.generators.Base.extend({
     this.installDependencies();
   }
 });
-
-

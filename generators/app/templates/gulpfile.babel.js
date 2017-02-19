@@ -6,6 +6,7 @@ require('es6-promise').polyfill();
 var webpack = require('webpack-stream');
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
+import gulp_shell from 'gulp-shell';
 import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
@@ -100,6 +101,9 @@ gulp.task('extras', () => {
 });
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
+
+
+gulp.task('webpack_dev', gulp_shell.task(['npm run dev']));
 
 gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
   browserSync({

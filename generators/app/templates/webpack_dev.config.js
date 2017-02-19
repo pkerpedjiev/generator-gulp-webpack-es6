@@ -4,8 +4,10 @@ var webpack = require('webpack');
 module.exports = {
   context: __dirname + '/app',
   entry: {<%= name %>: ['./scripts/<%= name %>.js']},
+  devtool: "cheap-source-map",
   output: {
-    path: __dirname + '/build',
+    path: path.resolve(__dirname, 'build'),
+    publicPath: '/scripts/',       
     filename: '[name].js',
     libraryTarget: 'umd',
     library: '[name]'
@@ -23,9 +25,6 @@ module.exports = {
         test: /\.css$/,
         loader: 'style!css'
       }
-    ],
-    resolve: {
-      extensions: ['.js', '.jsx']
-    }
+    ]
   }
 };
