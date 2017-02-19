@@ -40,8 +40,8 @@ $ gulp webpack_dev
 
 Opening the given `url` should display a circle:
 
-<div id="circle">
-    <img src="circle.svg" width="250" height="250">
+<div>
+<img src="https://rawgit.com/saun4app/generator-gulp-webpack-es6/master/circle.svg">
 </div>
 
 # Building a release version
