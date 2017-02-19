@@ -41,10 +41,7 @@ $ gulp webpack_dev
 Opening the given `url` should display a circle:
 
 <div id="circle">
-  <svg width="250" height="250">
-  <circle cx="125" cy="125" r="30" fill="blue">
-</circle>
-</svg>
+    <img src="circle.svg" width="250" height="250">
 </div>
 
 # Building a release version
